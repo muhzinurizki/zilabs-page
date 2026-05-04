@@ -1,16 +1,9 @@
 "use client";
-// Kita pakai cara import bintang jika penamaan spesifik terus bermasalah,
-// atau kita panggil ikon yang standar pasti ada.
-import * as Icons from "lucide-react";
+import { motion } from "framer-motion";
+import { Mail, Instagram, Linkedin, Github, ArrowUpRight } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-
-  // Helper untuk merender ikon secara aman
-  const Icon = ({ name, className }: { name: keyof typeof Icons; className?: string }) => {
-    const LucideIcon = Icons[name] as any;
-    return LucideIcon ? <LucideIcon className={className} /> : null;
-  };
 
   return (
     <footer className="pt-20 pb-10 border-t border-white/5 bg-deep-black relative overflow-hidden text-white">
@@ -31,31 +24,42 @@ export default function Footer() {
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               Partner teknologi terpercaya untuk membangun, meluncurkan, dan mengembangkan solusi digital masa depan.
             </p>
+            <div className="flex gap-4">
+              <a href="#" className="p-2 bg-white/5 rounded-lg hover:bg-violet-purple/20 transition-colors text-gray-400 hover:text-white">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href="#" className="p-2 bg-white/5 rounded-lg hover:bg-violet-purple/20 transition-colors text-gray-400 hover:text-white">
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a href="#" className="p-2 bg-white/5 rounded-lg hover:bg-violet-purple/20 transition-colors text-gray-400 hover:text-white">
+                <Github className="w-5 h-5" />
+              </a>
+            </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Layanan */}
           <div>
             <h4 className="font-bold mb-6 text-sm uppercase tracking-wider text-white">Layanan</h4>
             <ul className="space-y-4 text-sm text-gray-400">
               <li>
                 <a href="#services" className="hover:text-white transition-colors flex items-center gap-1 group">
-                  Web Dev <Icons.ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" />
+                  Web Development <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" />
                 </a>
               </li>
               <li>
                 <a href="#services" className="hover:text-white transition-colors flex items-center gap-1 group">
-                  System Architecture <Icons.ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" />
+                  Sistem Custom <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" />
                 </a>
               </li>
               <li>
                 <a href="#course" className="hover:text-white transition-colors flex items-center gap-1 group">
-                  Zilabs Academy <Icons.ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" />
+                  Zilabs Academy <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" />
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Perusahaan */}
           <div>
             <h4 className="font-bold mb-6 text-sm uppercase tracking-wider text-white">Perusahaan</h4>
             <ul className="space-y-4 text-sm text-gray-400">
@@ -65,13 +69,13 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Kontak */}
           <div>
             <h4 className="font-bold mb-6 text-sm uppercase tracking-wider text-white">Kontak</h4>
             <ul className="space-y-4 text-sm text-gray-400">
               <li className="flex items-start gap-3">
-                <Icons.Mail className="w-5 h-5 text-violet-purple flex-shrink-0" />
-                <span className="hover:text-white transition-colors cursor-pointer">hello@zilabs.my.id</span>
+                <Mail className="w-5 h-5 text-violet-purple flex-shrink-0" />
+                <span className="hover:text-white transition-colors cursor-pointer">hello@zilabs.id</span>
               </li>
               <li className="text-xs leading-relaxed text-gray-500">
                 Tangerang, Banten<br />
@@ -89,7 +93,7 @@ export default function Footer() {
           </p>
           <div className="flex gap-8 text-[10px] text-gray-500 uppercase tracking-widest">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
+            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>
