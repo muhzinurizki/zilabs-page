@@ -8,7 +8,6 @@ import Pricing from "./components/Pricing";
 import Workflow from "./components/Workflow";
 import FAQ from "./components/FAQ";
 import CTA from "./components/CTA";
-import Footer from "./components/Footer";
 import FloatingWA from "./components/FloatingWA";
 
 export default function Home() {
@@ -24,7 +23,6 @@ export default function Home() {
       <Workflow />
       <FAQ />
       <CTA />
-      <Footer />
       <FloatingWA />
     </main>
   );
