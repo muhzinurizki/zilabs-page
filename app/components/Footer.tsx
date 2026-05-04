@@ -31,19 +31,6 @@ export default function Footer() {
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               Partner teknologi terpercaya untuk membangun, meluncurkan, dan mengembangkan solusi digital masa depan.
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="p-2 bg-white/5 rounded-lg hover:bg-violet-purple/20 transition-colors text-gray-400 hover:text-white">
-                <Icon name="Instagram" className="w-5 h-5" />
-              </a>
-              <a href="#" className="p-2 bg-white/5 rounded-lg hover:bg-violet-purple/20 transition-colors text-gray-400 hover:text-white">
-                {/* Fallback ke Globe jika Linkedin error */}
-                <Icon name="Linkedin" className="w-5 h-5" />
-              </a>
-              <a href="#" className="p-2 bg-white/5 rounded-lg hover:bg-violet-purple/20 transition-colors text-gray-400 hover:text-white">
-                {/* Fallback ke Code jika Github error */}
-                <Icon name="Github" className="w-5 h-5" />
-              </a>
-            </div>
           </div>
 
           {/* Quick Links */}
