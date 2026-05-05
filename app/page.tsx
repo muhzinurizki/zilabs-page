@@ -24,6 +24,14 @@ export default function Home() {
       <FAQ />
       <CTA />
       <FloatingWA />
+      <div className="pt-20 border-t border-white/5 text-center">
+          <p className="text-[10px] text-gray-600 font-bold uppercase tracking-[0.5em] mb-4">
+            Supported By
+          </p>
+          <div className="text-xl font-black text-gray-400 tracking-tighter hover:text-white transition-colors cursor-default">
+            NUSA KODE LABS
+          </div>
+        </div>
     </main>
   );
 }
