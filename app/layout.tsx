@@ -1,32 +1,29 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import PreLoader from "./components/PreLoader";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-// SESUAIKAN METADATA UNTUK SEO ZILABS
 export const metadata: Metadata = {
-  title: "Zilabs | Build • Launch • Grow",
-  description: "Partner teknologi terpercaya untuk digitalisasi UMKM dan pengembangan sistem custom. Fokus pada Laravel, React, dan solusi digital high-end.",
-  keywords: ["Agensi Digital", "Web Development Indonesia", "Zilabs Academy", "Laravel Developer", "Jasa Website Tangerang"],
-  authors: [{ name: "Muhzinur Rizki" }],
+  title: "Zilabs — Build • Launch • Grow",
+  description:
+    "Zilabs adalah Technology Agency yang membantu bisnis membangun, meluncurkan, dan mengembangkan sistem digital berbasis Laravel & React.",
+  keywords: [
+    "jasa website",
+    "agency web indonesia",
+    "laravel developer",
+    "react developer",
+    "pembuatan website bisnis",
+    "digital agency indonesia"
+  ],
+  authors: [{ name: "Zilabs Studio Team" }],
+
   openGraph: {
-    title: "Zilabs Technology Agency",
-    description: "Solusi Digital Futuristik & Edukasi Teknologi",
-    url: "https://zilabs.id", // Ganti dengan domain asli nanti
+    title: "Zilabs — Build • Launch • Grow",
+    description:
+      "Bangun sistem digital profesional bersama Zilabs. Fokus pada performa, scalability, dan growth.",
+    url: "https://zilabs.id",
     siteName: "Zilabs",
     images: [
       {
-        url: "/og-image.png", // Pastikan taruh file gambar di folder public
+        url: "/og-image.png", // nanti bikin ini
         width: 1200,
         height: 630,
       },
@@ -34,23 +31,36 @@ export const metadata: Metadata = {
     locale: "id_ID",
     type: "website",
   },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Zilabs — Technology Agency",
+    description: "Build • Launch • Grow bersama Zilabs.",
+    images: ["/og-image.png"],
+  },
+
+  metadataBase: new URL("https://zilabs.id"),
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html
-      lang="id" // Ganti ke id untuk SEO Indonesia
-      className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}
-    >
-      <body className="bg-deep-black text-white antialiased selection:bg-violet-purple/30 selection:text-white">
-        <PreLoader />
-        <div className="relative flex min-h-screen flex-col overflow-x-hidden">
+    <html lang="id" className="scroll-smooth">
+      <body className="bg-[#FAFAFA] text-dark-navy antialiased selection:bg-neon-purple/10 selection:text-neon-purple">
+
+        {/* GLOBAL AMBIENT BACKGROUND */}
+        <div className="fixed inset-0 -z-10 pointer-events-none">
+          <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-neon-purple/10 blur-[160px] rounded-full" />
+          <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-electric-blue/10 blur-[140px] rounded-full" />
+        </div>
+
+        <div className="relative flex min-h-screen flex-col">
           {children}
         </div>
+
       </body>
     </html>
   );

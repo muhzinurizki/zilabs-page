@@ -1,44 +1,73 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function FloatingWA() {
-  const phoneNumber = "628137880759"; // Ganti dengan nomor WA Zilabs kamu
-  const message = "Halo Zilabs, saya ingin konsultasi mengenai proyek digital.";
+  const [showBubble, setShowBubble] = useState(false);
+
+  const phoneNumber = "628137880759";
+
+  const message = `Halo Zilabs 👋
+
+Saya tertarik untuk konsultasi mengenai proyek digital.`;
 
   const waLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
-  return (
-    <div className="fixed bottom-8 right-8 z-[999]">
-      {/* Animasi Denyut (Pulse Effect) */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.5, 0.2, 0.5],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute inset-0 bg-green-500 rounded-full blur-xl"
-      />
+  // ⏱️ Auto show bubble setelah 3 detik
+  useEffect(() => {
+    const timer = setTimeout(() => setShowBubble(true), 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
-      {/* Tombol Utama */}
+  return (
+    <div className="fixed bottom-8 right-8 z-[999] flex items-end gap-4">
+
+      {/* 💬 FLOATING BUBBLE */}
+      <AnimatePresence>
+        {showBubble && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0 }}
+            className="hidden md:block bg-white px-5 py-3 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] border border-gray-100 max-w-[220px]"
+          >
+            <p className="text-sm text-gray-700 font-medium leading-snug">
+              Butuh bantuan? <br />
+              <span className="text-neon-purple font-semibold">
+                Chat kami sekarang
+              </span>
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* 🔘 BUTTON */}
       <motion.a
         href={waLink}
         target="_blank"
         rel="noopener noreferrer"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        className="relative flex items-center justify-center w-16 h-16 bg-[#25D366] rounded-full shadow-[0_10px_25px_rgba(37,211,102,0.4)] text-white group"
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.92 }}
+        className="relative flex items-center justify-center w-16 h-16 rounded-full text-white shadow-[0_10px_30px_rgba(123,97,255,0.4)] overflow-hidden group"
       >
-        <MessageCircle size={32} fill="currentColor" />
 
-        {/* Tooltip Label (Muncul saat Hover) */}
-        <span className="absolute right-20 px-4 py-2 bg-white text-black text-sm font-bold rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-xl whitespace-nowrap">
-          Chat Zilabs Sekarang
-        </span>
+        {/* GRADIENT BACKGROUND */}
+        <div className="absolute inset-0 bg-gradient-to-br from-neon-purple to-electric-blue" />
+
+        {/* GLOW */}
+        <div className="absolute inset-0 blur-xl opacity-0 group-hover:opacity-100 transition bg-neon-purple/40" />
+
+        {/* ICON */}
+        <MessageCircle size={30} className="relative z-10" />
+
+        {/* SUBTLE PULSE */}
+        <motion.div
+          animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0, 0.2] }}
+          transition={{ duration: 2.5, repeat: Infinity }}
+          className="absolute inset-0 bg-neon-purple rounded-full"
+        />
+
       </motion.a>
     </div>
   );

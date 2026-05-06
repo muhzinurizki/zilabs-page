@@ -1,38 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  /* Custom Colors */
-  --color-deep-black: #0a0a0f;
-  --color-dark-gray: #11131a;
-  --color-electric-blue: #0d6efd;
-  --color-violet-purple: #7b61ff;
-  --color-neon-magenta: #d946ef;
+  /* Skema Warna Zilabs Premium */
+  --color-neon-purple: #7B2FFF;
+  --color-electric-blue: #22B8FF;
+  --color-dark-navy: #0F172A;
+  --color-light-gray: #E5E7EB;
+  --color-soft-white: #F8FAFC;
 
-  /* Custom Background Image */
-  --background-image-gradient-brand: linear-gradient(
-    90deg,
-    #0d6efd 0%,
-    #7b61ff 50%,
-    #d946ef 100%
-  );
+  /* Gradient Brand */
+  --bg-gradient-brand: linear-gradient(135deg, #7B2FFF 0%, #22B8FF 100%);
 
-  /* Animation */
-  --animate-pulse-slow: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  /* Typography System */
+  --font-heading: "Poppins", sans-serif;
+  --font-sans: "Inter", sans-serif;
 }
 
-/* Custom CSS Utility yang tidak tercover theme */
 @layer base {
   body {
-    @apply bg-deep-black text-white antialiased overflow-x-hidden;
+    @apply bg-white text-dark-navy antialiased font-sans;
   }
-}
-
-@layer components {
-  .glass-card {
-    @apply bg-white/3 backdrop-blur-md border border-white/10 transition-all duration-300;
-  }
-
-  .neon-glow-magenta {
-    @apply shadow-[0_0_15px_rgba(217,70,239,0.4)] hover:shadow-[0_0_25px_rgba(217,70,239,0.6)];
+  h1, h2, h3, h4 {
+    @apply font-heading font-extrabold tracking-tighter;
   }
 }

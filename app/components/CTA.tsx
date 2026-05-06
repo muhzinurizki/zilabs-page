@@ -1,77 +1,121 @@
 "use client";
 import { motion } from "framer-motion";
-import { MessageSquare, Calendar } from "lucide-react";
+import { ArrowRight, Calendar, MessageSquare } from "lucide-react";
 
 export default function CTA() {
-  const phoneNumber = "628137880759"; // Ganti dengan nomor WA Zilabs
+  const phoneNumber = "628137880759";
 
-  // Handler untuk WhatsApp Cepat
   const handleWAContact = () => {
-    const message = "Halo Zilabs! Saya tertarik untuk konsultasi mengenai proyek digital. Apakah ada waktu luang?";
+    const message = `Halo Zilabs 👋
+
+Saya tertarik untuk memulai proyek digital.
+
+Boleh dibantu untuk konsultasi awal terkait kebutuhan saya?
+
+Terima kasih 🙏`;
     const waLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(waLink, "_blank");
+    window.open(waLink, "_blank", "noopener,noreferrer");
   };
 
-  // Handler untuk Jadwalkan Meeting (dengan Template Data)
   const handleScheduleMeeting = () => {
-    const meetingTemplate = `*FORM PENJADWALAN MEETING ZILABS*
----
-Nama Lengkap:
-Nama Perusahaan/Bisnis:
-Topik Proyek: (Web/System/Course)
+    const meetingTemplate = `Halo Zilabs 👋
+
+Saya ingin menjadwalkan meeting untuk diskusi proyek.
+
+Berikut data saya:
+
+Nama:
+Bisnis / Perusahaan:
+Kebutuhan:
 Estimasi Budget:
-Rencana Jadwal Meeting: (Contoh: Senin, Pukul 14.00 WIB)
----
-Halo Muhzinur & tim Zilabs, saya ingin menjadwalkan meeting untuk diskusi lebih detail. Berikut data saya.`;
+Waktu Meeting yang diinginkan:
+
+Mohon arahan untuk langkah selanjutnya. Terima kasih 🙏`;
 
     const waLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(meetingTemplate)}`;
-    window.open(waLink, "_blank");
+    window.open(waLink, "_blank", "noopener,noreferrer");
   };
 
   return (
-    <section className="py-20 relative overflow-hidden">
-      <div className="max-w-5xl mx-auto px-6">
+    <section className="relative py-32 bg-[#FAFAFA] overflow-hidden">
+
+      {/* ☁️ BACKGROUND GLOW */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-neon-purple/20 blur-[140px] rounded-full" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-electric-blue/20 blur-[120px] rounded-full" />
+      </div>
+
+      <div className="max-w-[900px] mx-auto px-6 relative z-10">
+
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-brand p-12 md:p-20 rounded-[3rem] text-center relative overflow-hidden shadow-[0_20px_50px_rgba(123,97,255,0.3)]"
+          className="relative rounded-[3rem] p-[1px] group"
         >
-          {/* Decorative Pattern */}
-          <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
-          <div className="absolute -top-24 -right-24 w-64 h-64 bg-white/10 blur-[80px] rounded-full" />
 
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6 relative z-10 leading-tight">
-            Siap Bangun Proyek <br /> Impian Anda?
-          </h2>
-          <p className="text-white/80 text-lg mb-12 max-w-2xl mx-auto relative z-10">
-            Diskusikan ide Anda bersama Muhzinur Rizki dan tim Zilabs. Pilih jalur komunikasi yang paling nyaman bagi Anda.
-          </p>
+          {/* GRADIENT BORDER */}
+          <div className="absolute inset-0 rounded-[3rem] bg-gradient-to-br from-neon-purple to-electric-blue opacity-90" />
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
-            {/* Button 1: WhatsApp Chat */}
-            <button
-              onClick={handleWAContact}
-              className="group flex items-center justify-center gap-3 px-8 py-5 bg-white text-black font-black rounded-2xl shadow-xl hover:scale-105 transition-all text-lg active:scale-95"
-            >
-              <MessageSquare className="w-5 h-5 transition-transform group-hover:rotate-12" />
-              Hubungi Via WhatsApp
-            </button>
+          {/* INNER CARD */}
+          <div className="relative bg-white rounded-[2.9rem] px-10 py-16 text-center overflow-hidden">
 
-            {/* Button 2: Schedule Meeting (The Form) */}
-            <button
-              onClick={handleScheduleMeeting}
-              className="group flex items-center justify-center gap-3 px-8 py-5 bg-transparent border-2 border-white/30 text-white font-black rounded-2xl hover:bg-white/10 transition-all text-lg active:scale-95"
-            >
-              <Calendar className="w-5 h-5 transition-transform group-hover:-rotate-12" />
-              Jadwalkan Meeting
-            </button>
+            {/* SOFT GLOW */}
+            <div className="absolute -top-20 -right-20 w-60 h-60 bg-neon-purple/20 blur-[100px] rounded-full" />
+            <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-electric-blue/20 blur-[100px] rounded-full" />
+
+            {/* CONTENT */}
+            <div className="relative z-10">
+
+              <p className="text-xs tracking-[0.4em] text-gray-400 mb-4">
+                START YOUR PROJECT
+              </p>
+
+              <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
+                Let’s Build Something <br />
+                <span className="bg-gradient-to-r from-neon-purple to-electric-blue bg-clip-text text-transparent">
+                  That Actually Works.
+                </span>
+              </h2>
+
+              <p className="text-gray-500 mb-12 max-w-xl mx-auto">
+                Diskusikan ide Anda bersama tim Zilabs. Kami bantu dari konsep hingga siap digunakan tanpa proses yang membingungkan.
+              </p>
+
+              {/* BUTTONS */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+                {/* WA */}
+                <button
+                  onClick={handleWAContact}
+                  className="group flex items-center justify-center gap-3 px-8 py-5 bg-gradient-to-r from-neon-purple to-electric-blue text-white font-bold rounded-2xl shadow-xl hover:scale-105 transition-all active:scale-95"
+                >
+                  <MessageSquare className="w-5 h-5 group-hover:rotate-12 transition" />
+                  Chat WhatsApp
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition" />
+                </button>
+
+                {/* MEETING */}
+                <button
+                  onClick={handleScheduleMeeting}
+                  className="group flex items-center justify-center gap-3 px-8 py-5 bg-white border border-gray-200 text-dark-navy font-bold rounded-2xl hover:shadow-xl transition-all active:scale-95"
+                >
+                  <Calendar className="w-5 h-5 group-hover:-rotate-12 transition" />
+                  Schedule Meeting
+                </button>
+
+              </div>
+
+              {/* TRUST LINE */}
+              <p className="mt-8 text-xs text-gray-400">
+                Konsultasi gratis • Tanpa komitmen • Respon cepat
+              </p>
+
+            </div>
+
           </div>
-
-          <p className="mt-8 text-white/50 text-xs font-medium tracking-widest uppercase relative z-10">
-            Respon cepat • Konsultasi 100% Gratis
-          </p>
         </motion.div>
+
       </div>
     </section>
   );

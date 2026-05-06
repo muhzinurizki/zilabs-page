@@ -1,78 +1,111 @@
 "use client";
 import { motion } from "framer-motion";
-import { Code2, Layout, Database, Zap } from "lucide-react";
+import { Code2, Database, Layout } from "lucide-react";
 
 const services = [
   {
-    title: "Web Development",
-    desc: "Website modern berkinerja tinggi, responsif, dan SEO friendly.",
-    icon: <Code2 className="w-6 h-6 text-electric-blue" />,
-    color: "border-electric-blue/20 bg-electric-blue/10",
+    title: "Build",
+    subtitle: "Web & Platform Development",
+    desc: "Kami membangun fondasi digital yang kuat — dari website hingga sistem kompleks yang scalable.",
+    icon: <Code2 className="w-5 h-5" />,
   },
   {
-    title: "System Development",
-    desc: "Sistem kustom untuk efisiensi operasional internal bisnis Anda.",
-    icon: <Database className="w-6 h-6 text-violet-purple" />,
-    color: "border-violet-purple/20 bg-violet-purple/10",
+    title: "Launch",
+    subtitle: "UI/UX & Experience",
+    desc: "Kami desain pengalaman yang bukan hanya indah, tapi juga meningkatkan trust & conversion.",
+    icon: <Layout className="w-5 h-5" />,
   },
   {
-    title: "UI/UX Design",
-    desc: "Desain antarmuka yang intuitif dan pengalaman pengguna yang memikat.",
-    icon: <Layout className="w-6 h-6 text-neon-magenta" />,
-    color: "border-neon-magenta/20 bg-neon-magenta/10",
-  },
-  {
-    title: "Automation",
-    desc: "Otomatisasi proses bisnis untuk menghemat waktu dan biaya.",
-    icon: <Zap className="w-6 h-6 text-electric-blue" />,
-    color: "border-electric-blue/20 bg-electric-blue/10",
+    title: "Grow",
+    subtitle: "System & Automation",
+    desc: "Kami bantu bisnis berkembang dengan sistem yang efisien dan automasi yang cerdas.",
+    icon: <Database className="w-5 h-5" />,
   },
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 bg-dark-gray/30">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-extrabold mb-4"
-          >
-            Layanan Unggulan Kami
-          </motion.h2>
+    <section className="relative py-32 overflow-hidden bg-[#FAFAFA]">
+
+      {/* ☁️ CLOUD BACKGROUND (CONSISTENT WITH HERO) */}
+      <div className="absolute inset-0 pointer-events-none">
+
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-neon-purple/10 blur-[140px] rounded-full" />
+
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-electric-blue/10 blur-[120px] rounded-full" />
+
+      </div>
+
+      <div className="max-w-[1100px] mx-auto px-6 relative z-10">
+
+        {/* 🧠 HEADER */}
+        <div className="text-center mb-24 max-w-2xl mx-auto">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-gray-400"
+            className="text-xs tracking-[0.4em] text-gray-400 mb-4"
           >
-            Solusi terintegrasi untuk setiap tahap perjalanan bisnis Anda.
+            OUR PROCESS
           </motion.p>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-4xl md:text-5xl font-black leading-tight mb-6"
+          >
+            From Idea to{" "}
+            <span className="bg-gradient-to-r from-neon-purple to-electric-blue text-transparent bg-clip-text">
+              Scalable Business
+            </span>
+          </motion.h2>
+
+          <p className="text-gray-500">
+            Kami tidak hanya membangun produk — kami membangun sistem yang membantu bisnis Anda berkembang.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, index) => (
+        {/* 🚀 FLOW SERVICES */}
+        <div className="relative flex flex-col gap-16">
+
+          {services.map((service, i) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
+              key={i}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="glass-card p-8 rounded-2xl group cursor-pointer hover:border-violet-purple/50"
+              transition={{ delay: i * 0.15 }}
+              className={`flex flex-col md:flex-row items-start md:items-center gap-8 ${i % 2 !== 0 ? "md:flex-row-reverse text-right md:text-left" : ""
+                }`}
             >
-              <div className={`w-12 h-12 mb-6 flex items-center justify-center rounded-lg border ${service.color} group-hover:scale-110 transition-transform`}>
+
+              {/* ICON + NUMBER */}
+              <div className="relative flex items-center justify-center w-20 h-20 rounded-2xl bg-white shadow-xl border border-gray-100">
+                <span className="absolute -top-2 -right-2 text-xs font-bold text-gray-400">
+                  0{i + 1}
+                </span>
                 {service.icon}
               </div>
-              <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                {service.desc}
-              </p>
+
+              {/* CONTENT */}
+              <div className="max-w-md">
+                <h3 className="text-2xl font-black mb-2">
+                  {service.title}
+                </h3>
+
+                <p className="text-sm text-neon-purple mb-3">
+                  {service.subtitle}
+                </p>
+
+                <p className="text-gray-500 leading-relaxed">
+                  {service.desc}
+                </p>
+              </div>
+
             </motion.div>
           ))}
+
+          {/* ✨ CONNECTING LINE */}
+          <div className="hidden md:block absolute left-10 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-gray-200 to-transparent" />
+
         </div>
       </div>
     </section>
